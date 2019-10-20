@@ -1,10 +1,6 @@
 <?php 
   session_start(); 
-
-  if (!isset($_SESSION['username'])) {
-  	$_SESSION['msg'] = "You must log in first";
-  	header('location: login.php');
-  }
+  
   if (isset($_GET['logout'])) {
   	session_destroy();
   	unset($_SESSION['username']);
@@ -19,9 +15,8 @@
 </head>
 <body>
 
-<div class="header">
-	<h2>Home Page</h2>
-</div>
+<?php include('header.php') ?>
+
 <div class="content">
   	<!-- notification message -->
   	<?php if (isset($_SESSION['success'])) : ?>
