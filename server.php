@@ -25,7 +25,7 @@ if (isset($_POST['reg_user'])) {
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
 
-  if ($user) { 
+  if ($user) {
     if ($user['username'] === $username) {
       array_push($errors, "Username already exists");
     }
