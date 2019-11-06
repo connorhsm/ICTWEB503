@@ -99,3 +99,7 @@ if (isset($_POST['addContact'])) {
     header('location: index.php');
   }
 }
+
+if (isset($_POST['editContact'])) {
+  
+}
