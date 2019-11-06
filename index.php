@@ -38,27 +38,31 @@ if (isset($_GET['addnew'])) {
 		<!-- logged in user information -->
 		<?php if (isset($_SESSION['username'])) :
 			$db = mysqli_connect('localhost', 'username', 'password', 'ICTWEB502');
+			$result = mysqli_query($db, "SELECT * FROM contacts ORDER BY id desc"); ?>
 
-			$result = mysqli_query($db, "SELECT * FROM contacts"); ?>
 			<table border='1'>
-				<tr>
-					<th>Name</th>
-					<th>Business</th>
-					<th>Phone</th>
-					<th>Email</th>
-					<th>Postcode</th>
-				</tr>
-				<?php while ($row = mysqli_fetch_array($result)) { ?>
+				<thead>
 					<tr>
-						<td><?php $row['name'] ?></td>
-						<td><?php $row['business'] ?></td>
-						<td><?php $row['phone'] ?></td>
-						<td><?php $row['email'] ?></td>
-						<td><?php $row['postcode'] ?></td>
-						<td><a href="">Edit</a></td>
-						<td><a href="">Delete</a></td>
+						<th>Name</th>
+						<th>Business</th>
+						<th>Phone</th>
+						<th>Email</th>
+						<th>Postcode</th>
 					</tr>
-				<?php } ?>
+				</thead>
+				<tbody>
+					<?php while ($row = mysqli_fetch_assoc($result)) { ?>
+						<tr>
+							<td><?php echo $row['name'] ?></td>
+							<td><?php echo $row['business'] ?></td>
+							<td><?php echo $row['phone'] ?></td>
+							<td><?php echo $row['email'] ?></td>
+							<td><?php echo $row['postcode'] ?></td>
+							<td><a href="">Edit</a></td>
+							<td><a href="">Delete</a></td>
+						</tr>
+					<?php } ?>
+				</tbody>
 			</table>
 			<p> <a href="index.php?addnew='1'">Add new contact</a> </p>
 		<?php endif ?>
