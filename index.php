@@ -37,7 +37,7 @@ if (isset($_GET['addnew'])) {
 
 		<!-- logged in user information -->
 		<?php if (isset($_SESSION['username'])) :
-			$db = mysqli_connect('localhost', 'username', 'password', 'ICTWEB501');
+			$db = mysqli_connect('localhost', 'username', 'password', 'ICTWEB502');
 
 			$result = mysqli_query($db, "SELECT * FROM contacts");
 			echo "<table border='1'><tr><th>Name</th><th>Business</th><th>Phone</th><th>Email</th><th>Postcode</th></tr>";

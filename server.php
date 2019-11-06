@@ -4,7 +4,7 @@ session_start();
 $username = "";
 $errors = array();
 
-$db = mysqli_connect('localhost', 'username', 'password', 'ICTWEB501');
+$db = mysqli_connect('localhost', 'username', 'password', 'ICTWEB502');
 
 if (isset($_POST['reg_user'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
