@@ -58,8 +58,8 @@ if (isset($_GET['addnew'])) {
 							<td><?php echo $row['phone'] ?></td>
 							<td><?php echo $row['email'] ?></td>
 							<td><?php echo $row['postcode'] ?></td>
-							<td><a href="">Edit</a></td>
-							<td><a href="">Delete</a></td>
+							<td><a href="editcontact.php?id=<?php echo $row['id'] ?>">Edit</a></td>
+							<td><a href="deletecontact.php?id=<?php echo $row['id'] ?>">Delete</a></td>
 						</tr>
 					<?php } ?>
 				</tbody>
