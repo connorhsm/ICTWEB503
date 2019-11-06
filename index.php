@@ -48,6 +48,8 @@ if (isset($_GET['addnew'])) {
 				echo "<td>" . $row['phone'] . "</td>";
 				echo "<td>" . $row['email'] . "</td>";
 				echo "<td>" . $row['postcode'] . "</td>";
+				echo "<td><a href=\"\">Edit</a></td>";
+				echo "<td><a href=\"\">Delete</a></td>";
 				echo "</tr>";
 			}
 			echo "</table>";
