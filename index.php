@@ -43,23 +43,27 @@ if (isset($_GET['addnew'])) {
 			<table border='1'>
 				<thead>
 					<tr>
+						<th>ID</th>
 						<th>Name</th>
 						<th>Business</th>
 						<th>Phone</th>
 						<th>Email</th>
 						<th>Postcode</th>
+						<th>Edit</th>
+						<th>Delete</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php while ($row = mysqli_fetch_assoc($result)) { ?>
 						<tr>
+							<td><?php echo $row['id'] ?></td>
 							<td><?php echo $row['name'] ?></td>
 							<td><?php echo $row['business'] ?></td>
 							<td><?php echo $row['phone'] ?></td>
 							<td><?php echo $row['email'] ?></td>
 							<td><?php echo $row['postcode'] ?></td>
 							<td><a href="editcontact.php?id=<?php echo $row['id'] ?>">Edit</a></td>
-							<td><a href="deletecontact.php?id=<?php echo $row['id'] ?>">Delete</a></td>
+							<td><a href="server.php?delid=<?php echo $row['id'] ?>">Delete</a></td>
 						</tr>
 					<?php } ?>
 				</tbody>

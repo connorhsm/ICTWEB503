@@ -101,5 +101,43 @@ if (isset($_POST['addContact'])) {
 }
 
 if (isset($_POST['editContact'])) {
-  
+  $id = mysqli_real_escape_string($db, $_POST['id']);
+  $name = mysqli_real_escape_string($db, $_POST['name']);
+  $business = mysqli_real_escape_string($db, $_POST['business']);
+  $phone = mysqli_real_escape_string($db, $_POST['phone']);
+  $email = mysqli_real_escape_string($db, $_POST['email']);
+  $postcode = mysqli_real_escape_string($db, $_POST['postcode']);
+
+  if (empty($name)) {
+    array_push($errors, "Name is required");
+  }
+  if (empty($business)) {
+    array_push($errors, "Business is required");
+  }
+  if (empty($phone)) {
+    array_push($errors, "Phone is required");
+  }
+  if (empty($email)) {
+    array_push($errors, "Email is required");
+  }
+  if (empty($postcode)) {
+    array_push($errors, "Postcode is required");
+  }
+
+  if (count($errors) == 0) {
+    $query = "UPDATE contacts SET name='$name', business='$business', phone='$phone', email='$email', postcode='$postcode' WHERE id='$id'";
+    $update = mysqli_query($db, $query);
+    $_SESSION['success'] = "Contact updated";
+    header('location: index.php');
+  }
+}
+
+if (isset($_GET['delid'])) {
+  $id = mysqli_real_escape_string($db, $_GET['delid']);
+  $query = "DELETE FROM contacts WHERE id='$id'";
+  $delete = mysqli_query($db, $query);
+  $_SESSION['success'] = "Contact deleted";
+  header('location: index.php');
+
+
 }

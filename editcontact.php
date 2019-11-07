@@ -20,6 +20,10 @@ $row = mysqli_fetch_assoc($result);
     <form method="post" action="editcontact.php">
         <?php include('errors.php'); ?>
         <div class="input-group">
+            <label>ID</label>
+            <input type="number" name="id" value="<?php echo $row['id']; ?>" readonly>
+        </div>
+        <div class="input-group">
             <label>Name</label>
             <input type="text" name="name" value="<?php echo $row['name']; ?>">
         </div>
