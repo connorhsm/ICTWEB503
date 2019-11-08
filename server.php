@@ -69,6 +69,7 @@ if (isset($_POST['login_user'])) {
 }
 
 if (isset($_POST['addContact'])) {
+  $ownerID = mysqli_real_escape_string($db, $_POST['ownerID']);
   $name = mysqli_real_escape_string($db, $_POST['name']);
   $business = mysqli_real_escape_string($db, $_POST['business']);
   $phone = mysqli_real_escape_string($db, $_POST['phone']);
@@ -92,10 +93,10 @@ if (isset($_POST['addContact'])) {
   }
 
   if (count($errors) == 0) {
-    $query = "INSERT INTO contacts (name, business, phone, email, postcode)
-    VALUES ('{$name}','{$business}','{$phone}','{$email}','{$postcode}')";
+    $query = "INSERT INTO contacts (ownerID, name, business, phone, email, postcode)
+    VALUES ('{$ownerID}','{$name}','{$business}','{$phone}','{$email}','{$postcode}')";
     $insert = mysqli_query($db, $query);
-    $_SESSION['success'] = "Contact added";
+    $_SESSION['success'] = "Contact added $insert";
     header('location: index.php');
   }
 }

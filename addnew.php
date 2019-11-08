@@ -1,8 +1,8 @@
 <?php 
 session_start();
 include('server.php');
-$user = $_SESSION['username'];
-$query = "SELECT * FROM users WHERE username='$user' LIMIT 1";
+$loggedInUser = $_SESSION['username'];
+$query = "SELECT * FROM users WHERE username='$loggedInUser' LIMIT 1";
 $result = mysqli_query($db, $query);
 $ownerID = mysqli_fetch_assoc($result);
 ?>
@@ -34,7 +34,7 @@ $ownerID = mysqli_fetch_assoc($result);
         </div>
         <div class="input-group">
             <label>Phone</label>
-            <input type="tel" name="phone">
+            <input type="number" name="phone">
         </div>
         <div class="input-group">
             <label>Email</label>

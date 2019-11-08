@@ -38,7 +38,15 @@ if (isset($_GET['addnew'])) {
 		<!-- logged in user information -->
 		<?php if (isset($_SESSION['username'])) :
 			$db = mysqli_connect('localhost', 'username', 'password', 'ICTWEB502');
-			$result = mysqli_query($db, "SELECT * FROM contacts ORDER BY id desc"); ?>
+
+			$loggedInUser = $_SESSION['username'];
+			$query = "SELECT * FROM users WHERE username='$loggedInUser' LIMIT 1";
+			$result = mysqli_query($db, $query);
+			$row = mysqli_fetch_assoc($result);
+			$ownerID = $row['id'];
+
+			$query = "SELECT * FROM contacts WHERE ownerID='$ownerID'";
+			$contacts = mysqli_query($db, $query); ?>
 
 			<table border='1'>
 				<thead>
@@ -54,7 +62,7 @@ if (isset($_GET['addnew'])) {
 					</tr>
 				</thead>
 				<tbody>
-					<?php while ($row = mysqli_fetch_assoc($result)) { ?>
+					<?php while ($row = mysqli_fetch_assoc($contacts)) { ?>
 						<tr>
 							<td><?php echo $row['id'] ?></td>
 							<td><?php echo $row['name'] ?></td>
