@@ -1,4 +1,11 @@
-<?php include('server.php') ?>
+<?php 
+session_start();
+include('server.php');
+$user = $_SESSION['username'];
+$query = "SELECT * FROM users WHERE username='$user' LIMIT 1";
+$result = mysqli_query($db, $query);
+$ownerID = mysqli_fetch_assoc($result);
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,6 +23,10 @@
         <div class="input-group">
             <label>Name</label>
             <input type="text" name="name">
+        </div>
+        <div class="input-group">
+            <label>OwnerID</label>
+            <input type="text" name="ownerID" value="<?php echo $ownerID['id'] ?>" readonly>
         </div>
         <div class="input-group">
             <label>Business</label>
